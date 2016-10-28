@@ -188,10 +188,22 @@ public class ExpandableLayout extends LinearLayout {
 
     @Override
     public boolean performClick() {
-        toggle();
+        if (triggerView==null) {
+            toggle();
+        }
         return super.performClick();
     }
 
+    private View triggerView;
+    public void setTriggerToggleView(View view){
+        triggerView=view;
+        view.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toggle();
+            }
+        });
+    }
     public interface OnExpandListener {
         void onExpand(boolean expanded) ;
     }
