@@ -21,7 +21,7 @@
 
 
 ```groovy
-compile 'com.github.djun100:ExpandableLayout:8aa5027d53908bdafdde43371bafdabf5dbec07c'
+compile 'com.github.djun100:ExpandableLayout:ae5a171e27bcc9e4071d1b94bdb230f8736fc6a1'
 ```
 # ExpandableLayout
 
