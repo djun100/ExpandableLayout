@@ -1,3 +1,28 @@
+改良版
+
+        @Override
+    public boolean performClick() {
+        if (triggerView==null) {
+            toggle();
+        }
+        return super.performClick();
+    }
+
+    private View triggerView;
+    public void setTriggerToggleView(View view){
+        triggerView=view;
+        view.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toggle();
+            }
+        });
+    }
+
+
+```groovy
+compile 'com.github.djun100:ExpandableLayout:8aa5027d53908bdafdde43371bafdabf5dbec07c'
+```
 # ExpandableLayout
 
 A expandable Layout to save space and  reduce jump between Activity and Fragment
