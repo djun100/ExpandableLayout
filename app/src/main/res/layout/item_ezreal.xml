@@ -71,12 +71,17 @@
                 android:text="Background"
                 />
             <TextView
+                android:visibility="gone"
                 android:textColor="@android:color/white"
                 android:id="@+id/summoner_story_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/ezreal_story"
                 android:textSize="12sp"/>
+            <com.cy.view.component.ListViewNoScroll
+                android:id="@+id/mlv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
         </LinearLayout>
 

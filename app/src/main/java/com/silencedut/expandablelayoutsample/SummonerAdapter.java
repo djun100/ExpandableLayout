@@ -5,8 +5,16 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
+
+import com.cy.DataStructure.UtilDummyData;
+import com.cy.adapter.AdapterCommonSingleStyle;
+import com.cy.adapter.DemoBean;
+import com.cy.adapter.ViewHolder;
 import com.silencedut.expandablelayout.ExpandableLayout;
+
 import java.util.HashSet;
+
 
 
 /**
@@ -42,9 +50,12 @@ public class SummonerAdapter extends RecyclerView.Adapter<SummonerAdapter.Summon
 
     class SummonerHolder extends RecyclerView.ViewHolder {
         private ExpandableLayout expandableLayout ;
+        ListView mlv;
         private SummonerHolder(final View itemView) {
             super(itemView);
             expandableLayout = (ExpandableLayout) itemView.findViewById(R.id.expandable_layout);
+            mlv= (ListView) itemView.findViewById(R.id.mlv);
+
         }
 
          private void updateItem(final int position) {
@@ -56,6 +67,12 @@ public class SummonerAdapter extends RecyclerView.Adapter<SummonerAdapter.Summon
             });
             expandableLayout.setExpand(mExpandedPositionSet.contains(position));
 
+             mlv.setAdapter(new AdapterCommonSingleStyle<DemoBean>(UtilDummyData.makeDummyData(DemoBean.class, position+1,3,8), R.layout.lv_item) {
+                 @Override
+                 protected void convert(ViewHolder vh, DemoBean item) {
+                     vh.setText(R.id.mtv,item.getType());
+                 }
+             });
         }
     }
 
