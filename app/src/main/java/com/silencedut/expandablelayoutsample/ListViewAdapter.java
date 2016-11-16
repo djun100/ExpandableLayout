@@ -1,6 +1,7 @@
 package com.silencedut.expandablelayoutsample;
 
 import android.content.Context;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,9 +47,9 @@ public class ListViewAdapter extends BaseAdapter {
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
 
-        ExpandableLayout expandableLayout;
+        final ExpandableLayout expandableLayout;
         ListView mlv;
-        if(convertView==null) {
+//        if(convertView==null) {
             convertView=mLayoutInflater.inflate(position%2==0?R.layout.item_jinx:R.layout.item_ezreal,parent,false);
 
             mlv= (ListView) convertView.findViewById(R.id.mlv);
@@ -61,9 +62,9 @@ public class ListViewAdapter extends BaseAdapter {
             expandableLayout = (ExpandableLayout) convertView.findViewById(R.id.expandable_layout);
             expandableLayout.setExpandWithParentScroll(false);
             convertView.setTag(expandableLayout);
-        }else {
-            expandableLayout =(ExpandableLayout) convertView.getTag();
-        }
+//        }else {
+//            expandableLayout =(ExpandableLayout) convertView.getTag();
+//        }
 
         if(expandableLayout !=null) {
             expandableLayout.setOnExpandListener(new ExpandableLayout.OnExpandListener() {
@@ -73,9 +74,15 @@ public class ListViewAdapter extends BaseAdapter {
                 }
             });
         }
-        expandableLayout.setExpand(mExpandedPositionSet.contains(position));
+//        expandableLayout.setExpand(mExpandedPositionSet.contains(position));
 //        expandableLayout.expand();
-//        expandableLayout.setExpand(true);
+        expandableLayout.setExpand(true);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                expandableLayout.setExpand(mExpandedPositionSet.contains(position));
+            };
+        },10);
         return convertView;
     }
 
